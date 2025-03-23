@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.epoll.Epoll;

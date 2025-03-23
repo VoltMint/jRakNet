@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;

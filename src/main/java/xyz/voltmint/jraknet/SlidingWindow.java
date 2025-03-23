@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

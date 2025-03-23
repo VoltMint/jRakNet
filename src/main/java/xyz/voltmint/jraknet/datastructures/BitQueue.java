@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet.datastructures;
+package xyz.voltmint.jraknet.datastructures;
 
 /**
  * Implementation of a queue that compresses multiple single bits (booleans) into single bytes.

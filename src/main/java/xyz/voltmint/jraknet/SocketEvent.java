@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
 import java.net.SocketAddress;
 

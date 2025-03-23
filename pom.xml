@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>xyz.vothmint</groupId>
+    <groupId>xyz.voltmint</groupId>
     <artifactId>jraknet</artifactId>
     <version>7.0.11-SNAPSHOT</version>
 

@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet.datastructures;
+package xyz.voltmint.jraknet.datastructures;
 
 /**
  * This class provides a fixed-size round-robin buffer implementation.

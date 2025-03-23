@@ -1,26 +1,26 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
 import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
-import static xyz.vothmint.jraknet.RakNetConstraints.ALREADY_CONNECTED;
-import static xyz.vothmint.jraknet.RakNetConstraints.CONNECTION_REQUEST;
-import static xyz.vothmint.jraknet.RakNetConstraints.CONNECTION_REQUEST_ACCEPTED;
-import static xyz.vothmint.jraknet.RakNetConstraints.CONNECTION_REQUEST_FAILED;
-import static xyz.vothmint.jraknet.RakNetConstraints.CONNECTION_TIMEOUT_MILLIS;
-import static xyz.vothmint.jraknet.RakNetConstraints.MAXIMUM_MTU_SIZE;
-import static xyz.vothmint.jraknet.RakNetConstraints.MAX_LOCAL_IPS;
-import static xyz.vothmint.jraknet.RakNetConstraints.MINIMUM_MTU_SIZE;
-import static xyz.vothmint.jraknet.RakNetConstraints.NEW_INCOMING_CONNECTION;
-import static xyz.vothmint.jraknet.RakNetConstraints.NO_FREE_INCOMING_CONNECTIONS;
-import static xyz.vothmint.jraknet.RakNetConstraints.OPEN_CONNECTION_REPLY_1;
-import static xyz.vothmint.jraknet.RakNetConstraints.OPEN_CONNECTION_REPLY_2;
-import static xyz.vothmint.jraknet.RakNetConstraints.OPEN_CONNECTION_REQUEST_1;
-import static xyz.vothmint.jraknet.RakNetConstraints.OPEN_CONNECTION_REQUEST_2;
-import static xyz.vothmint.jraknet.RakNetConstraints.RAKNET_PROTOCOL_VERSION;
-import static xyz.vothmint.jraknet.RakNetConstraints.RAKNET_PROTOCOL_VERSION_MOJANG;
+import static xyz.voltmint.jraknet.RakNetConstraints.ALREADY_CONNECTED;
+import static xyz.voltmint.jraknet.RakNetConstraints.CONNECTION_REQUEST;
+import static xyz.voltmint.jraknet.RakNetConstraints.CONNECTION_REQUEST_ACCEPTED;
+import static xyz.voltmint.jraknet.RakNetConstraints.CONNECTION_REQUEST_FAILED;
+import static xyz.voltmint.jraknet.RakNetConstraints.CONNECTION_TIMEOUT_MILLIS;
+import static xyz.voltmint.jraknet.RakNetConstraints.MAXIMUM_MTU_SIZE;
+import static xyz.voltmint.jraknet.RakNetConstraints.MAX_LOCAL_IPS;
+import static xyz.voltmint.jraknet.RakNetConstraints.MINIMUM_MTU_SIZE;
+import static xyz.voltmint.jraknet.RakNetConstraints.NEW_INCOMING_CONNECTION;
+import static xyz.voltmint.jraknet.RakNetConstraints.NO_FREE_INCOMING_CONNECTIONS;
+import static xyz.voltmint.jraknet.RakNetConstraints.OPEN_CONNECTION_REPLY_1;
+import static xyz.voltmint.jraknet.RakNetConstraints.OPEN_CONNECTION_REPLY_2;
+import static xyz.voltmint.jraknet.RakNetConstraints.OPEN_CONNECTION_REQUEST_1;
+import static xyz.voltmint.jraknet.RakNetConstraints.OPEN_CONNECTION_REQUEST_2;
+import static xyz.voltmint.jraknet.RakNetConstraints.RAKNET_PROTOCOL_VERSION;
+import static xyz.voltmint.jraknet.RakNetConstraints.RAKNET_PROTOCOL_VERSION_MOJANG;
 
 /**
  * @author BlackyPaw

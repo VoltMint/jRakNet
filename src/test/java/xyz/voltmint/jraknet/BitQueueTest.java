@@ -1,6 +1,6 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
-import xyz.vothmint.jraknet.datastructures.BitQueue;
+import xyz.voltmint.jraknet.datastructures.BitQueue;
 import org.junit.Test;
 
 import java.util.LinkedList;

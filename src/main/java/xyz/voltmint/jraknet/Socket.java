@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;

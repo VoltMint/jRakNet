@@ -1,6 +1,6 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
-import static xyz.vothmint.jraknet.RakNetConstraints.NUM_ORDERING_CHANNELS;
+import static xyz.voltmint.jraknet.RakNetConstraints.NUM_ORDERING_CHANNELS;
 
 import io.netty.buffer.ByteBuf;
 

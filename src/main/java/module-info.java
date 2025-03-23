@@ -6,5 +6,5 @@ module gomint.jraknet {
     requires io.netty.common;
     requires org.slf4j;
 
-    exports xyz.vothmint.jraknet;
+    exports xyz.voltmint.jraknet;
 }

@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;
@@ -20,10 +20,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static xyz.vothmint.jraknet.RakNetConstraints.OPEN_CONNECTION_REQUEST_1;
-import static xyz.vothmint.jraknet.RakNetConstraints.UNCONNECTED_PING;
-import static xyz.vothmint.jraknet.RakNetConstraints.UNCONNECTED_PING_OPEN_CONNECTION;
-import static xyz.vothmint.jraknet.RakNetConstraints.UNCONNECTED_PONG;
+import static xyz.voltmint.jraknet.RakNetConstraints.OPEN_CONNECTION_REQUEST_1;
+import static xyz.voltmint.jraknet.RakNetConstraints.UNCONNECTED_PING;
+import static xyz.voltmint.jraknet.RakNetConstraints.UNCONNECTED_PING_OPEN_CONNECTION;
+import static xyz.voltmint.jraknet.RakNetConstraints.UNCONNECTED_PONG;
 
 /**
  * @author BlackyPaw

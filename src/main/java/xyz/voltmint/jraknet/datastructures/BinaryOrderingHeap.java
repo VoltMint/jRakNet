@@ -1,6 +1,6 @@
-package xyz.vothmint.jraknet.datastructures;
+package xyz.voltmint.jraknet.datastructures;
 
-import xyz.vothmint.jraknet.EncapsulatedPacket;
+import xyz.voltmint.jraknet.EncapsulatedPacket;
 
 /**
  * @author BlackyPaw

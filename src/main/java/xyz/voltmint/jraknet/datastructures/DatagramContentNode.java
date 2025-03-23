@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet.datastructures;
+package xyz.voltmint.jraknet.datastructures;
 
 /**
  * @author BlackyPaw

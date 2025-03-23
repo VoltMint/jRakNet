@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
 /**
  * Possible states a connection may be in. Usually connections will only be announced for use once they reached the

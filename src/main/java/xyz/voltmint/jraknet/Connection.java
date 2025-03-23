@@ -1,11 +1,11 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
-import xyz.vothmint.jraknet.datastructures.BinaryOrderingHeap;
-import xyz.vothmint.jraknet.datastructures.BitQueue;
-import xyz.vothmint.jraknet.datastructures.DatagramContentNode;
-import xyz.vothmint.jraknet.datastructures.FixedSizeRRBuffer;
-import xyz.vothmint.jraknet.datastructures.OrderingHeap;
-import xyz.vothmint.jraknet.datastructures.TriadRange;
+import xyz.voltmint.jraknet.datastructures.BinaryOrderingHeap;
+import xyz.voltmint.jraknet.datastructures.BitQueue;
+import xyz.voltmint.jraknet.datastructures.DatagramContentNode;
+import xyz.voltmint.jraknet.datastructures.FixedSizeRRBuffer;
+import xyz.voltmint.jraknet.datastructures.OrderingHeap;
+import xyz.voltmint.jraknet.datastructures.TriadRange;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
 import org.slf4j.Logger;
@@ -32,14 +32,14 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 
-import static xyz.vothmint.jraknet.RakNetConstraints.CONNECTED_PING;
-import static xyz.vothmint.jraknet.RakNetConstraints.CONNECTED_PONG;
-import static xyz.vothmint.jraknet.RakNetConstraints.DATA_HEADER_BYTE_LENGTH;
-import static xyz.vothmint.jraknet.RakNetConstraints.DETECT_LOST_CONNECTION;
-import static xyz.vothmint.jraknet.RakNetConstraints.DISCONNECTION_NOTIFICATION;
-import static xyz.vothmint.jraknet.RakNetConstraints.MAX_MESSAGE_HEADER_BYTE_LENGTH;
-import static xyz.vothmint.jraknet.RakNetConstraints.NUM_ORDERING_CHANNELS;
-import static xyz.vothmint.jraknet.RakNetConstraints.USER_PACKET_ENUM;
+import static xyz.voltmint.jraknet.RakNetConstraints.CONNECTED_PING;
+import static xyz.voltmint.jraknet.RakNetConstraints.CONNECTED_PONG;
+import static xyz.voltmint.jraknet.RakNetConstraints.DATA_HEADER_BYTE_LENGTH;
+import static xyz.voltmint.jraknet.RakNetConstraints.DETECT_LOST_CONNECTION;
+import static xyz.voltmint.jraknet.RakNetConstraints.DISCONNECTION_NOTIFICATION;
+import static xyz.voltmint.jraknet.RakNetConstraints.MAX_MESSAGE_HEADER_BYTE_LENGTH;
+import static xyz.voltmint.jraknet.RakNetConstraints.NUM_ORDERING_CHANNELS;
+import static xyz.voltmint.jraknet.RakNetConstraints.USER_PACKET_ENUM;
 
 /**
  * @author BlackyPaw
@@ -233,7 +233,7 @@ public abstract class Connection {
     /**
      * Disconnects from this connection giving a reason for the disconnect that will
      * be sent to the remote peer. As the disconnect operation might require some time
-     * and may not be completed by blocking a {@link xyz.vothmint.jraknet.SocketEvent.Type#CONNECTION_DISCONNECTED} event
+     * and may not be completed by blocking a {@link xyz.voltmint.jraknet.SocketEvent.Type#CONNECTION_DISCONNECTED} event
      * will be sent out once the connection disconnected successfully. After initiating the disconnect
      * no further packets will be sent or received.
      *

@@ -1,6 +1,6 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
-import xyz.vothmint.jraknet.datastructures.TriadRange;
+import xyz.voltmint.jraknet.datastructures.TriadRange;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
 

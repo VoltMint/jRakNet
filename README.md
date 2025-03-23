@@ -1,6 +1,6 @@
 # jRakNet
 
-This project is part of the GoMint.io project and aims to be a reliable port of the original RakNet
+This project is part of the VoltMint.io project and aims to be a reliable port of the original RakNet
 networking library written in C++ for Java. It is developed specifically to meet the requirements
 of the GoMint server implementation but might be used in other projects, too, if slightly adapted.
 

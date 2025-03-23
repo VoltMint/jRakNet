@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
 /**
  * Different types of reliability which may be assured for sending data across the network.

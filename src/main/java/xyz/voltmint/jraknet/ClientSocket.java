@@ -1,4 +1,4 @@
-package xyz.vothmint.jraknet;
+package xyz.voltmint.jraknet;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;
@@ -16,8 +16,8 @@ import java.net.InetSocketAddress;
 import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 
-import static xyz.vothmint.jraknet.RakNetConstraints.UNCONNECTED_PING;
-import static xyz.vothmint.jraknet.RakNetConstraints.UNCONNECTED_PONG;
+import static xyz.voltmint.jraknet.RakNetConstraints.UNCONNECTED_PING;
+import static xyz.voltmint.jraknet.RakNetConstraints.UNCONNECTED_PONG;
 
 /**
  * @author BlackyPaw
@@ -107,7 +107,7 @@ public class ClientSocket extends Socket {
      * Sends one unconnected ping packet to the specified target system. Note though that the
      * ping is not guaranteed to ever reach the target system nor is the pong response ever
      * guaranteed to reach this client socket. If this socket should ever receive a pong response
-     * from the target system it will generate an {@link xyz.vothmint.jraknet.SocketEvent.Type#UNCONNECTED_PONG} event.
+     * from the target system it will generate an {@link xyz.voltmint.jraknet.SocketEvent.Type#UNCONNECTED_PONG} event.
      * The socket must have been initialized before this method is invoked otherwise an IllegalStateException
      * will be thrown.
      *
@@ -122,7 +122,7 @@ public class ClientSocket extends Socket {
      * Sends one unconnected ping packet to the specified target system. Note though that the
      * ping is not guaranteed to ever reach the target system nor is the pong response ever
      * guaranteed to reach this client socket. If this socket should ever receive a pong response
-     * from the target system it will generate an {@link xyz.vothmint.jraknet.SocketEvent.Type#UNCONNECTED_PONG} event.
+     * from the target system it will generate an {@link xyz.voltmint.jraknet.SocketEvent.Type#UNCONNECTED_PONG} event.
      * The socket must have been initialized before this method is invoked otherwise an IllegalStateException
      * will be thrown.
      *
