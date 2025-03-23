@@ -47,22 +47,4 @@ itself.
 ## Maven Repository
 
 In case you are using Maven inside your project, feel free to use the GoMint project's own maven
-repository to grab jRakNet. Simply add the following lines to your pom.xml
-
-```XML
-<repositories>
-    <repository>
-        <id>gomint-repo</id>
-        <name>GoMint Public Repository</name>
-        <url>https://repo.gomint.io/content/groups/public/</url>
-    </repository>
-</repositories>
-```
-
-## Authors
-
-jRakNet was mainly developed by BlackyPaw with the support of geNAZt for several tests.
-
-## Contact
-
-If you wish to get in contact feel free to write an email: blackypaw [at] gomint [dot] io
+repository to grab jRakNet.
