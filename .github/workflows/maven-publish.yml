@@ -1,4 +1,4 @@
-name: Maven Deploy with GPG
+name: Maven Deploy
 
 on:
   release:
@@ -16,23 +16,29 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'maven'
-          server-id: ossrh
-          settings-path: ${{ github.workspace }}
 
       - name: Setup GPG
         run: |
           mkdir -p ~/.gnupg
           chmod 700 ~/.gnupg
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" | tr -d '\r' > private.key
-          gpg --batch --pinentry-mode loopback --import private.key
-          rm private.key
-          (echo 5; echo y; echo save) | gpg --command-fd 0 --edit-key "${{ secrets.GPG_KEY_ID }}" trust
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          echo "use-agent" >> ~/.gnupg/gpg.conf
+          gpgconf --kill all
+
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | \
+          awk '{gsub(/\\n/,"\n")}1' | \
+          gpg --batch --import
+
+          echo -e "trust\n5\ny\nsave\n" | \
+          gpg --command-fd 0 --status-fd 2 --edit-key "${{ secrets.GPG_KEY_ID }}"
+
           gpg --list-secret-keys --keyid-format LONG
 
       - name: Build and Deploy
         run: |
           mvn -B clean deploy -DskipTests \
-            -P release \
+            -P release-sign-artifacts \
             -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} \
             -Dgpg.homedir=$HOME/.gnupg \
             --settings settings.xml
@@ -41,7 +47,6 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           GPG_TTY: $(tty)
 
-      - name: Verify Deployment
+      - name: Verify Signatures
         run: |
-          gpg --verify target/*.pom.asc
-          ls -la target/*.jar target/*.pom.asc
+          find target -name '*.asc' | xargs -I {} gpg --verify {}
