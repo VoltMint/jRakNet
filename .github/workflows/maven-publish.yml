@@ -1,0 +1,41 @@
+name: Maven Deploy with GPG
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Setup GPG
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" > private.key
+          gpg --batch --import private.key
+          rm private.key
+          echo "trusted-key ${{ secrets.GPG_KEY_ID }}" >> ~/.gnupg/gpg.conf
+          gpg --list-secret-keys --keyid-format LONG
+
+      - name: Build and Deploy
+        run: |
+          mvn -B clean deploy -DskipTests \
+            -P release \
+            -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} \
+            --settings settings.xml
+        env:
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+
+      - name: Verify Deployment
+        run: |
+          gpg --verify target/*.asc
+          ls -la target/*.asc
