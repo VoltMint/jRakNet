@@ -29,6 +29,7 @@
         <snapshotRepository>
             <id>ossrh</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <uniqueVersion>true</uniqueVersion>
         </snapshotRepository>
         <repository>
             <id>ossrh</id>
