@@ -1,6 +1,7 @@
 name: Maven Publish
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
@@ -17,32 +18,12 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Setup GPG
-        run: |
-          mkdir -p ~/.gnupg
-          chmod 700 ~/.gnupg
-          sudo su
-          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
-          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
-          gpgconf --kill all
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" > private.key
-          sed -i 's/\\n/\n/g' private.key
-          gpg --batch --import private.key
-          rm private.key
-          echo -e "trust\n5\ny\nsave\n" | gpg --command-fd 0 --edit-key "${{ secrets.GPG_KEY_ID }}"
-          gpg --list-secret-keys --keyid-format LONG
-
       - name: Build and Deploy
         run: |
-          mvn -B clean deploy -DskipTests \
-            -P release-sign-artifacts \
-            -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} \
-            -Dgpg.homedir=$HOME/.gnupg \
-            --settings settings.xml
+          mvn -B clean deploy -DskipTests
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-          GPG_TTY: /dev/console
 
       - name: Verify Signatures
         run: |
