@@ -1,4 +1,4 @@
-name: Maven Deploy
+name: Maven Publish
 
 on:
   release:
@@ -23,16 +23,12 @@ jobs:
           chmod 700 ~/.gnupg
           echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
-          echo "use-agent" >> ~/.gnupg/gpg.conf
           gpgconf --kill all
-
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" | \
-          awk '{gsub(/\\n/,"\n")}1' | \
-          gpg --batch --import
-
-          echo -e "trust\n5\ny\nsave\n" | \
-          gpg --command-fd 0 --status-fd 2 --edit-key "${{ secrets.GPG_KEY_ID }}"
-
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" > private.key
+          sed -i 's/\\n/\n/g' private.key
+          gpg --batch --import private.key
+          rm private.key
+          echo -e "trust\n5\ny\nsave\n" | gpg --command-fd 0 --edit-key "${{ secrets.GPG_KEY_ID }}"
           gpg --list-secret-keys --keyid-format LONG
 
       - name: Build and Deploy
@@ -45,8 +41,8 @@ jobs:
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-          GPG_TTY: $(tty)
+          GPG_TTY: /dev/console
 
       - name: Verify Signatures
         run: |
-          find target -name '*.asc' | xargs -I {} gpg --verify {}
+          find target -name '*.asc' -exec gpg --verify {} \;
