@@ -16,13 +16,17 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'maven'
+          server-id: ossrh
+          settings-path: ${{ github.workspace }}
 
       - name: Setup GPG
         run: |
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" > private.key
-          gpg --batch --import private.key
+          mkdir -p ~/.gnupg
+          chmod 700 ~/.gnupg
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | tr -d '\r' > private.key
+          gpg --batch --pinentry-mode loopback --import private.key
           rm private.key
-          echo "trusted-key ${{ secrets.GPG_KEY_ID }}" >> ~/.gnupg/gpg.conf
+          (echo 5; echo y; echo save) | gpg --command-fd 0 --edit-key "${{ secrets.GPG_KEY_ID }}" trust
           gpg --list-secret-keys --keyid-format LONG
 
       - name: Build and Deploy
@@ -30,12 +34,14 @@ jobs:
           mvn -B clean deploy -DskipTests \
             -P release \
             -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} \
+            -Dgpg.homedir=$HOME/.gnupg \
             --settings settings.xml
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          GPG_TTY: $(tty)
 
       - name: Verify Deployment
         run: |
-          gpg --verify target/*.asc
-          ls -la target/*.asc
+          gpg --verify target/*.pom.asc
+          ls -la target/*.jar target/*.pom.asc
